@@ -1,0 +1,141 @@
+:root {
+    --bg: #f4f6f8;
+    --card: #fff;
+    --accent: #2b6cb0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, Roboto, system-ui, Arial;
+    background: var(--bg);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.controls input,
+.controls select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.add-book {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.add-book form {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.add-book input[type="text"],
+.add-book input[type="password"],
+.add-book input[type="email"],
+.add-book input[type="number"],
+.add-book input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.add-book button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 0;
+    background: var(--accent);
+    color: #fff;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.card {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card .meta {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.card .category {
+    font-weight: 600;
+}
+
+.card .actions {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.button {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn-toggle {
+    background: #38a169;
+    color: white;
+}
+
+.btn-remove {
+    background: #e53e3e;
+    color: white;
+}
+
+.available {
+    color: green;
+    font-weight: 700;
+}
+
+.unavailable {
+    color: crimson;
+    font-weight: 700;
+}
+
+footer {
+    margin-top: 18px;
+    color: #555;
+}
+
+@media (max-width: 992px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

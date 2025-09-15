@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Library Management System</title>
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+    </head>
+    <body>
+        <main class="container">
+            <h1>Library Management System</h1>
+
+
+            <section class="controls">
+                <input id="searchInput" placeholder="Search by title or author..." />
+
+
+                <select id="categoryFilter">
+                    <option value="all">All categories</option>
+                </select>
+
+
+                <button id="showAllBtn">Show All</button>
+            </section>
+
+
+            <section class="add-book">
+                <h2>Add a book</h2>
+                <form id="addBookForm">
+                    <input id="title" placeholder="Title" required />
+                    <input id="author" placeholder="Author" required />
+                    <input id="category" placeholder="Category" required />
+                    <input type="checkbox" id="isReference" /> 
+                    <label> Reference book </label>
+                    <input id="locationCode" placeholder="Location code (for reference)" />
+                    <button type="submit">Add Book</button>
+                </form>
+            </section>
+
+
+            <section id="booksContainer" class="books-grid"></section>
+
+
+            <!-- <footer>
+                <p>Repository name: <strong>task 1 adv</strong></p>
+            </footer> -->
+        </main>
+
+
+        <script src="./assets/js/app.js"></script>
+    </body>
+</html>
