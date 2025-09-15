@@ -1,12 +1,4 @@
-
-// app.js
-// Library Management System using OOP (ES2020+ features)
-
-// ------------------
-// Book class (Encapsulation & Abstraction)
-// ------------------
 class Book {
-  // private fields
   #id;
   #title;
   #author;
@@ -26,7 +18,7 @@ class Book {
     return 'b_' + Math.random().toString(36).slice(2, 9);
   }
 
-  // getters - controlled access (abstraction)
+  // getters
   getId() { 
       return this.#id;
     }
@@ -43,7 +35,7 @@ class Book {
     return this.#isAvailable;
   }
 
-  // setters - controlled modification
+  // setters
   setTitle(val) {
     if(typeof val === 'string') this.#title = val;
   }
@@ -59,15 +51,12 @@ class Book {
     this.#isAvailable = !this.#isAvailable;
   }
 
-  // display info (polymorphism: can be overridden)
+  // display info
   displayInfo() {
     return `${this.getTitle()} — ${this.getAuthor()} (${this.getCategory()})`;
   }
 }
 
-// ------------------
-// ReferenceBook extends Book (Inheritance + Polymorphism)
-// ------------------
 class ReferenceBook extends Book {
   #locationCode;
 
@@ -83,15 +72,11 @@ class ReferenceBook extends Book {
     if(typeof val === 'string') this.#locationCode = val; 
   }
 
-  // polymorphism - override
   displayInfo() {
     return `${this.getTitle()} — ${this.getAuthor()} (${this.getCategory()}) [Location: ${this.getLocationCode()}]`;
   }
 }
 
-// ------------------
-// Library class - manages collection of books
-// ------------------
 class Library {
   #books;
 
@@ -101,7 +86,6 @@ class Library {
   }
 
   addBook(book) {
-    // accept raw object or Book instance
     if (book instanceof Book || book instanceof ReferenceBook) {
       this.#books.push(book);
     } else if (typeof book === 'object') {
@@ -150,9 +134,6 @@ class Library {
   }
 }
 
-// ------------------
-// UI logic
-// ------------------
 const library = new Library([
   { title: 'JavaScript: The Good Parts', author: 'Douglas Crockford', category: 'Programming', isAvailable: true },
   { title: 'Eloquent JavaScript', author: 'Marijn Haverbeke', category: 'Programming', isAvailable: false },
@@ -167,7 +148,6 @@ const addBookForm = document.getElementById('addBookForm');
 const showAllBtn = document.getElementById('showAllBtn');
 
 function renderCategories(){
-  // clear then populate
   categoryFilter.innerHTML = '<option value="all">All categories</option>';
   library.getCategories().forEach(cat => {
     const opt = document.createElement('option');
@@ -206,7 +186,7 @@ function renderBooks(books) {
 
     const info = document.createElement('div');
     info.className = 'meta';
-    info.textContent = b.displayInfo(); // polymorphic call
+    info.textContent = b.displayInfo();
 
     const actions = document.createElement('div');
     actions.className = 'actions';
@@ -244,7 +224,6 @@ function renderBooks(books) {
 }
 
 function refreshUI() {
-  // apply current filters
   const q = searchInput.value.trim();
   const cat = categoryFilter.value;
 
@@ -254,7 +233,6 @@ function refreshUI() {
   renderCategories();
 }
 
-// event listeners
 searchInput.addEventListener('input', () => refreshUI());
 categoryFilter.addEventListener('change', () => refreshUI());
 showAllBtn.addEventListener('click', () => {
@@ -284,5 +262,4 @@ addBookForm.addEventListener('submit', (e) => {
   refreshUI();
 });
 
-// initial render
 refreshUI();
